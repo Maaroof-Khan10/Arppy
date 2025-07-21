@@ -178,8 +178,8 @@ def run_targeted_spoof(target_ip, gateway_ip):
     mac_table.add_column("Host", style="dim", width=12)
     mac_table.add_column("IP Address", style="cyan")
     mac_table.add_column("MAC Address", style="yellow")
-    mac_table.add_row("Target", target_ip, target_mac)
-    mac_table.add_row("Gateway", gateway_ip, gateway_mac)
+    mac_table.add_row("Target", target_ip, target_mac.replace(':', '-'))
+    mac_table.add_row("Gateway", gateway_ip, gateway_mac.replace(':', '-'))
     console.print(mac_table)
     
     sent_packets_count = 0
